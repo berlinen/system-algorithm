@@ -36,7 +36,21 @@ function PolyAdd(p1, p2) {
       p2 = p2.link
     }
   }
+  // p1 不为空的情况 p1的每一项往后挪
+  while(p1) {
+    attach(p1.coef, p1.expon, rear)
+    p1 = p1.link
+  }
+  // p2 不为空的情况 p2的每一项往后挪
+  while(p2) {
+    attach(p2.coef, p2.expon, rear)
+    p2 = p2.link
+  }
 
+  rear.link = null
+  temp = front
+  front = front.link
+  return front
 }
 
 // 拷贝函数
