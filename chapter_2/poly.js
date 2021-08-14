@@ -17,9 +17,9 @@ function PolyAdd(p1, p2) {
   let sum
 
   rear = node
-  front = rear
+  front = rear  // front 记录结果多项式链表的表头节点
 
-  while(p1 && p2) {
+  while(p1 && p2) { // 当两个多项式都是非零的时候
     // 比较指数大小
     if(p1.expon > p2.expon) {
       attach(p1.coef, p1.expon, rear)
@@ -48,17 +48,19 @@ function PolyAdd(p1, p2) {
   }
 
   rear.link = null
-  temp = front
-  front = front.link
+  temp = front //
+  front = front.link // 令front指向结果多项式的第一个非零项
   return front
 }
 
 // 拷贝函数
 function attach(coef, expon, rear) {
-  const link = {
-    coef,
-    expon
-  }
-  rear.link = link
-  return rear
+  // 新节点赋值
+  let p = node
+  p.coef = coef
+  p.expon = expon
+  p.link = null
+
+  rear.link = p
+  rear = p // 修改rear的值 
 }
