@@ -40,6 +40,10 @@
  * 乘法实现
  * 多项式输出
  */
+const PNODE = {
+  link: null
+}
+
 function multiSum() {
   let p1, p2, pp, ps
   //  读入
@@ -54,23 +58,79 @@ function multiSum() {
 }
 /**
  * 读入多项式
+ * rear 初始值是多少
+ * 1 初始值设为null 在attach函数中根据reat是否为null1做不同处理
+ * 2 rear 指向空节点
  */
-function readPoly() {
-
+function readPoly(n) {
+  let p, rear, t, c, e
+  p = node // 链表头空节点
+  p.link = null
+  rear = p
+  while(n--) {
+    attach(c, e, rear) // 将当前节点插入到尾部
+  }
+  t = p;
+  p = p.link
+  return p
 }
 /**
  * 乘法运算
  */
 function mult(p1, p2) {
+  let t1 = p1, t2 = p2
+  let p = node
+  rear = p
+  while(t2) {
+    attach(t1.coef * t2.coef, t1.expon + t2.expon, rear)
+    t2 = t2.link
+  }
 
 }
 
 /**
  * 加法运算
+ * 1 乘法转换成加法
+ * 2
  */
 
 function add(p1, p2) {
+  let t1, t2
+  t1 = p1
+  t2 = p2
+  let p = node
+  let rear = p
 
+  while(t1 && t2) {
+    if(t1.expon === t2.expon) {
+      let sum = p1.coef + p2.coef
+      if(sum) attach(sum, t1.expon, rear)
+      t1 = t1.link
+      t2 = t2.link
+    }
+
+    if(t1.expon > t2.expon) {
+      attach(t1.coef,t1.expon, rear)
+      t1 = t1.link
+    }
+
+    if(t2.expon > t1.expon) {
+      attach(t2.coef, t2.expon, rear)
+      t2 = t2.link
+    }
+  }
+
+  while(t1) {
+    attach(t1.c, t1.expon, rear)
+    t1 = t1.link
+  }
+
+  while(t2) {
+    attach(t2.coef, t2.expon, rear)
+    t2 = t2.link
+  }
+
+  return p
 }
 
 /**
@@ -82,5 +142,11 @@ function add(p1, p2) {
  */
 
 function attach(c, e, rear)  {
-
+  const p = node
+  // 新节点赋值
+  p.coef = c
+  p.expon = e
+  p.link = null
+  rear.link = p
+  rear = p // 修改rear值
 }
