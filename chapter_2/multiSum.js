@@ -78,6 +78,7 @@ function readPoly(n) {
  * 乘法运算
  */
 function mult(p1, p2) {
+  if(!p1 || !p2) return null
   let t1 = p1, t2 = p2
   let p = node
   rear = p
@@ -85,6 +86,44 @@ function mult(p1, p2) {
     // 系数相乘 指数相加
     attach(t1.coef * t2.coef, t1.expon + t2.expon, rear)
     t2 = t2.link
+  }
+
+  t1 = t1.link
+  while(t1) {
+    t2 = p2
+    rear = p
+    while(t2) {
+      t2 = t2.link
+    }
+    t1 = t1.link
+    while(t1) {
+      t2 = p2
+      rear = p
+      while(t2) {
+        e = t1.expon + t2.expon
+        c = t1.coef * t2.coef
+        while(rear.link && rear.link.expon > e) {
+          rear = rear.link
+        }
+        if(rear.link && rear.link.expon === e) {
+          if(rear.link.coef + c) {
+            rear.link.coef += c
+          } else {
+            let t = rear.link
+            rear.link = t.link
+          }
+        } else {
+          let t = node
+          t.coef = c
+          t.expon = e
+          t.link = rear.link
+          rear.link = t
+          rear = rear.link
+        }
+        t2 = t2.link
+      }
+      t1 = t1.link
+    }
   }
 
 }
