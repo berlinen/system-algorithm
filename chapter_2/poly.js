@@ -62,5 +62,7 @@ function attach(coef, expon, rear) {
   p.link = null
 
   rear.link = p
-  rear = p // 修改rear的值 
+  rear = p // 修改rear的值
 }
+
+
