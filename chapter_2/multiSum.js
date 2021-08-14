@@ -82,6 +82,7 @@ function mult(p1, p2) {
   let p = node
   rear = p
   while(t2) {
+    // 系数相乘 指数相加
     attach(t1.coef * t2.coef, t1.expon + t2.expon, rear)
     t2 = t2.link
   }
@@ -149,4 +150,29 @@ function attach(c, e, rear)  {
   p.link = null
   rear.link = p
   rear = p // 修改rear值
+}
+
+/**
+ * 输出函数
+ * @param {*} p
+ */
+function printp(p) {
+  let flag = 0; // f辅助调整输出格式用
+
+  if(!p) {
+    console.log('0 0\n')
+    return
+  }
+
+  while(p) {
+    if(flag) {
+      flag = 1
+    } else {
+      console.log(' ')
+      console.log('%d %d', p.coef, p.expon)
+      p = p.link
+    }
+  }
+
+  console.log('\n')
 }
