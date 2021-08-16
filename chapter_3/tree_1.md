@@ -16,5 +16,31 @@
 for(let i = tab.length; i >0 && Tab[i] !== k; i--) {
   return i
 }
+
+// 这种算法的时间复杂度为O(n)
+```
+
+2 二分查找
+
+假设n个数据元素的关键字满足有序（比如小到大）并且是连续存放，那么可以进行二分查找
+
+```js
+function BinarySearch(arr, k) {
+  let left = 1, right = -1, mid = -1
+  right = arr.length
+
+  while(left <= right) {
+    mid = Math.floor((left + right) / 2)
+
+    if(k < arr[mid]) right = mid - 1
+    else if(k > arr[mid]) left = mid + 1
+    else return mid
+  }
+  return -1
+}
+
+let arr = ['', 0, 1, 2, 3, 4, 5, 6]
+
+console.log(BinarySearch(arr ,0))
 ```
 
