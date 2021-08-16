@@ -10,7 +10,10 @@ function BinarySearch(arr, k) {
   right = arr.length
 
   while(left <= right) {
-    mid = Math.floor((left + right) / 2)
+    // 二分查找
+    // mid = Math.floor((left + right) / 2)
+    // 黄金分割
+    mid = Math.floor(left + (right - left) * 0.618)
 
     if(k < arr[mid]) right = mid - 1
     else if(k > arr[mid]) left = mid + 1

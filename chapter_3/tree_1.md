@@ -30,7 +30,8 @@ function BinarySearch(arr, k) {
   right = arr.length
 
   while(left <= right) {
-    mid = Math.floor((left + right) / 2)
+    // mid = Math.floor((left + right) / 2)
+    mid = Math.floor(left + (right - left) * 0.618)
 
     if(k < arr[mid]) right = mid - 1
     else if(k > arr[mid]) left = mid + 1
