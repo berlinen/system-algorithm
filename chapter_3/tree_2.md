@@ -122,4 +122,56 @@ struct TNode { /* 树节点定义 */
 3 创建一个二叉树
 
 
+#### 二叉树的存储结构
 
+1 顺序存储结构 数组存储
+
+完全二叉树：从上至下，从左到右顺序存储n个节点的完全二叉树的节点父子关系：
+
+非根节点（序号 i > 1）的父节点的序号是i / 2
+
+节点：序号为i的左孩子节点的序号是2i 若2i <= n 否则没有左孩子；右节点的序号是2i + 1
+
+一般二叉树也可以采用这种结构，但是会造成空间的浪费
+
+2 链表存储
+
+left  data right
+
+```typescript
+interfacre TreeNode {
+  data,
+  left,
+  right
+}
+```
+
+#### 二叉树的遍历
+
+1 先序遍历 递归程序来实现
+
+先访问根节点 -> 先序遍历其左子树 -> 先序遍历其右子树
+
+```js
+function preOrderTraversal(tree) {
+  if(tree) {
+    console.log(tree.data) // 先访问根节点
+    preOrderTraversal(tree.left) // 遍历左节点
+    preOrderTraversal(tree.right) // 遍历右节点
+  }
+}
+```
+
+2 中序遍历
+
+中序遍历其左子树 -> 访问根节点 -> 中序遍历其右子树
+
+```js
+function preOrderTraversal(tree) {
+  if(tree) {
+    preOrderTraversal(tree.left) // 遍历左节点
+    console.log(tree.data) // 访问根节点
+    preOrderTraversal(tree.right) // 遍历右节点
+  }
+}
+```
