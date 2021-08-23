@@ -49,4 +49,16 @@
 
 firstChild nextSibling
 
+### 二叉树表示
+
+```c
+typedef struct TNode *Poisition;
+typedef Position BinTree;  /* 二叉树类型 */
+struct TNode { /* 树节点定义 */
+  ElementType Data; // 节点数据
+  BinTree Left; // 左子树
+  BinTree Right; // 右子树
+}
+```
+
 
