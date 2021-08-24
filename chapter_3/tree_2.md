@@ -307,3 +307,38 @@ void PostTraversal(BinTree BT)//非递归后序遍历
 
 ```
 
+层序遍历
+
+二叉树遍历的核心问题：二维结构的线性化
+
+从节点访问其左右儿子节点
+
+访问左儿子后，右节点怎么办
+  * 需要一个存储结构保存暂时不访问的节点
+  * 存储结构：堆栈 队列
+
+队列实现
+
+1 遍历从根节点开始 首先将根节点入队然后开始执行循环：节点出队 访问该节点 其左右儿子入队
+
+· 从队列中取出一个元素
+
+· 访问改元素所指节点
+
+· 若改元素所指节点的左右孩子节点非空，则将其左右孩子的指针顺序入队
+
+```js
+function levelOrderTraversal(bt) {
+  const t = bt
+  if(!t) return // 若为空树则直接返回
+  let q = createQueque() // 创建并处始化一个队列
+  addQ(q, t)
+  while(!isEmpty(q)) {
+    t  = delete(q)
+    console.log(t.data) // 访问去除队列的节点
+    if(t.left) addQ(q, t.left)
+    if(t.right) addQ(q, t.rightt)
+  }
+}
+```
+
