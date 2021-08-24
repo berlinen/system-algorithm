@@ -15,3 +15,32 @@ function inOrderTraversal(tree) {
     }
   }
 }
+
+class Stack {
+  constructor() {
+    this.dataStore = []
+    this.top = 0
+  }
+  // stack methods
+  push(item) {
+    this.dataStore.push(item)
+    this.top++
+  }
+  // 删除栈顶元素，并返回它
+  pop() {
+    this.top--
+    return this.dataStore.pop()
+  }
+  // 返回栈顶元素
+  peek() {
+    return this.dataStore[this.top - 1]
+  }
+  // size
+  size() {
+    return this.top
+  }
+  // clear
+  clear() {
+    this.dataStore = []
+  }
+}
