@@ -189,3 +189,37 @@ function nextOrderTraversal(tree) {
   }
 }
 ```
+
+#### 二叉树的非递归遍历
+
+中序遍历非递归遍历算法
+
+非递归算法实现的基本思路：使用堆栈
+
+中序遍历非递归遍历算法
+
+1. 遇到一个节点，就把它压栈，并去遍历他的左子树
+
+2. 当左子树遍历结束后，从栈顶弹出这个节点并访问它
+
+3. 然后按其右指针再去中序遍历该节点的右子树
+
+```js
+// 中序遍历
+
+function inOrderTraversal(tree) {
+  const t = tree
+  let s  = creatStack() // 创建并初始化一个堆栈
+  while(t || !isEmpty(s)) {
+    while(t) { // 一直向左并将沿途节点压入堆栈
+      push(s, t)
+      t = t.left
+    }
+    if(!isEmpty(s))  {
+      t = pop(s) // 节点弹出堆栈
+      console.log(t.data) //  访问打印节点
+      t = t.right // 转向右子树
+    }
+  }
+}
+```
