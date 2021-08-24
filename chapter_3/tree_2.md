@@ -334,11 +334,60 @@ function levelOrderTraversal(bt) {
   let q = createQueque() // 创建并处始化一个队列
   addQ(q, t)
   while(!isEmpty(q)) {
-    t  = delete(q)
+    t  = delete(q) // 抛出一个元素出来
     console.log(t.data) // 访问去除队列的节点
-    if(t.left) addQ(q, t.left)
+    if(t.left) addQ(q, t.left) // 左右儿子放到队列里
     if(t.right) addQ(q, t.rightt)
   }
+}
+```
+
+####  二叉树的四种遍历
+
+```java
+void InorderTraversal( BinTree BT )
+{
+    if( BT ) {
+        InorderTraversal( BT->Left );
+        /* 此处假设对BT结点的访问就是打印数据 */
+        printf("%d ", BT->Data); /* 假设数据为整型 */
+        InorderTraversal( BT->Right );
+    }
+}
+
+void PreorderTraversal( BinTree BT )
+{
+    if( BT ) {
+        printf("%d ", BT->Data );
+        PreorderTraversal( BT->Left );
+        PreorderTraversal( BT->Right );
+    }
+}
+
+void PostorderTraversal( BinTree BT )
+{
+    if( BT ) {
+        PostorderTraversal( BT->Left );
+        PostorderTraversal( BT->Right );
+        printf("%d ", BT->Data);
+    }
+}
+
+void LevelorderTraversal ( BinTree BT )
+{
+    Queue Q;
+    BinTree T;
+
+    if ( !BT ) return; /* 若是空树则直接返回 */
+
+    Q = CreatQueue(); /* 创建空队列Q */
+    AddQ( Q, BT );
+    while ( !IsEmpty(Q) ) {
+        T = DeleteQ( Q );
+        printf("%d ", T->Data); /* 访问取出队列的结点 */
+        if ( T->Left )   AddQ( Q, T->Left );
+        if ( T->Right )  AddQ( Q, T->Right );
+    }
 }
 ```
 
