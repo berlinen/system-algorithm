@@ -59,6 +59,7 @@ function find(x, bt) {
 由于非递归函数执行效率高，可将尾递归函数改为迭代函数
 
 ```js
+// 由树的高度决定查询效率  最差的结果就是子树全部倾斜于左边 或者右边
 function iterfind(x, bst) {
   while(bst) {
     if(x > bst.data) {
@@ -71,5 +72,27 @@ function iterfind(x, bst) {
   }
 
   return null // 查找失败
+}
+```
+
+#### 查找最大元素和最小元素
+
+最大元素一定是在树的最右边分支的端节点上
+
+```js
+function findMax(bst)  {
+  if(bst) {
+    while(bst.right) bst  = bst.right
+  }
+}
+```
+
+最小元素一定是在书的最左分支的端节点上
+
+```js
+function findMin(bst)  {
+  if(bst) {
+    while(bst.left) bst  = bst.left
+  }
 }
 ```
