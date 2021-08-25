@@ -82,7 +82,7 @@ function iterfind(x, bst) {
 ```js
 function findMax(bst)  {
   if(bst) {
-    while(bst.right) bst  = bst.right
+    while(bst.right) bst  = bst.right //  沿右分支继续查找直到最右叶节点
   }
 }
 ```
