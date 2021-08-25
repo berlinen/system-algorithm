@@ -22,6 +22,19 @@ T2  = [TreeNode]
 ```
 
 2 建立二叉树
+```js
+function main () {
+  const r1 = buildTree(t1)
+  const r2 = buildTree(t2)
+  // 判断r1 r2  是否是同构
+  if(isSomorphic(r1, r2)) console.log('yes')
+  else console.log('no')
+
+  return 0
+}
+
+function
+```
 
 3 同构判别
 
