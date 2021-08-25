@@ -43,3 +43,15 @@ delete：删除
 * x 大于根节点，只需要在右子树中搜索
 
 *  若两者比较结果相等，搜索完成，返回指向节点的指针
+
+```js
+function find(x, bt) {
+  if(!bt) return null // 查找失败
+
+  if(x > bt.data) return find(x, bt.right) // 查找右子树
+
+  else if(x bt.data) return find(x, bt.left) // 查找左子树
+
+  else return bt // 查找成果  返回节点的找到节点的地址
+}
+```
