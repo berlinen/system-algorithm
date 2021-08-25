@@ -48,10 +48,28 @@ delete：删除
 function find(x, bt) {
   if(!bt) return null // 查找失败
 
-  if(x > bt.data) return find(x, bt.right) // 查找右子树
+  if(x > bt.data) return find(x, bt.right) // 查找右子树 尾递归
 
-  else if(x bt.data) return find(x, bt.left) // 查找左子树
+  else if(x bt.data) return find(x, bt.left) // 查找左子树 尾递归尾递归
 
   else return bt // 查找成果  返回节点的找到节点的地址
+}
+```
+
+由于非递归函数执行效率高，可将尾递归函数改为迭代函数
+
+```js
+function iterfind(x, bst) {
+  while(bst) {
+    if(x > bst.data) {
+      bst = bst.right // 向右子树移动继续查找
+    } else if(x < bst.data) {
+      bst = bst.left //  向左子树移动继续查找
+    }else {
+      return bst //查找成功  返回节点的找到节点的地址
+    }
+  }
+
+  return null // 查找失败
 }
 ```
