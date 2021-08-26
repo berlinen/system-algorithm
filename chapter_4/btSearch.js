@@ -76,12 +76,32 @@ class BiinarySearch {
 
   // 返回树中最小的键
   minNode(node) {
+    if(node) {
+      while(node && node.left !== null) {
+        node = node.left
+      }
+      return node.key
+    }
+    return null
+  }
 
+  min() {
+    return this.minNode(this.root)
   }
 
   // 返回树中最大的键
   maxNode(node) {
+    if(node) {
+      while(node && node.right !== null) {
+        node = node.right
+      }
+      return node.key
+    }
+    return null
+  }
 
+  max() {
+    return this.maxNode(this.root)
   }
 
   // 在树中查找一个键 如果节点存在， 则返回true 如果节点不存在 则返回false
