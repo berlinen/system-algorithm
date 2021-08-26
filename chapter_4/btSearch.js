@@ -1,18 +1,39 @@
 //  二叉搜索树
 
+function Node(key) {
+  this.key = key // 键
+  this.left = null // 左侧节点
+  this.right = null // 右侧节点
+}
+
 class BiinarySearch {
   root = null
 
-  constructor(key) {  // 节点
-    this.key = key // 键
-    this.left = null // 左侧节点
-    this.right = null // 右侧节点
-  }
-
   // 向树中插入一个新的键
   insertNode(node, newNode) {
-
+    if(newNode.key < node.key) {
+      if(node.left === null) {
+        node.left = newNode
+      } else {
+        this.insertNode(node.left, newNode)
+      }
+    } else {
+      if(node.right === null) {
+        node.right = newNode
+      } else {
+        this.insertNode(node.right, newNode)
+      }
+    }
   }
+
+  insert(key) {
+    let newNode = new Node(key)
+    if(this.root === null) { //第一个键
+      this.root = newNode
+    } else {
+      this.insertNode(this.root, newNode)
+    }
+   }
 
   // 听过中序遍历方式遍历所有节点
   inOrderTraverseNode(node, callback)  {
