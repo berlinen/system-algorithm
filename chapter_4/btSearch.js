@@ -33,21 +33,45 @@ class BiinarySearch {
     } else {
       this.insertNode(this.root, newNode)
     }
-   }
+  }
 
-  // 听过中序遍历方式遍历所有节点
+  // 通过中序遍历方式遍历所有节点
   inOrderTraverseNode(node, callback)  {
+    if(node !== null) {
+      this.inOrderTraverseNode(node.left, callback)
+      callback(node.key)
+      this.inOrderTraverseNode(node.right, callback)
+    }
+  }
 
+  inOrderTraverse(callback) {
+    this.inOrderTraverseNode(this.root, callback)
   }
 
   // 通过先序方式遍历所有节点
-  preOrderTraverse(node, callback) {
+  preOrderTraverseNode(node, callback) {
+    if(node !== null) {
+      callback(node.key)
+      this.preOrderTraverse(node.left, callback)
+      this.preOrderTraverse(node.right, callback)
+    }
+  }
 
+  preOrderTraverse(callback) {
+    this.preOrderTraverseNode(this.root, callback)
   }
 
   // 通过后序方式遍历所有节点
-  postOrderTraverse(node, callback) {
+  postOrderTraverseNode(node, callback) {
+    if(node !== null) {
+      this.postOrderTraverseNode(node.left, callback)
+      this.postOrderTraverseNode(node.right, callback)
+      callback(node.key)
+    }
+  }
 
+  postOrderTraverse(callback) {
+    this.postOrderTraverseNode(this.root, callback)
   }
 
   // 返回树中最小的键
@@ -93,12 +117,12 @@ tree.insert(20)
 tree.insert(18)
 tree.insert(25)
 tree.insert(6)
-tree.inOrderTraverse(printNode) // 3 5 6 7 8 9 10 11 12 13 14 15 18 20 25
-tree.preOrderTraverse(printNode) // 11 7 5 3 6 9 8 10 15 13 12 14 20 18 25
-tree.postOrderTraverse(printNode) // 3 6 5 8 10 9 7 12 14 13 18 25 20 15 11
-console.log(tree.min()) // 3
-console.log(tree.max()) // 25
-console.log(tree.search(10)) // true
-console.log(tree.search(100)) // false
-tree.remove(25)
-tree.inOrderTraverse(printNode) // 3 5 6 7 8 9 10 11 12 13 14 15 18 20
+// tree.inOrderTraverse(printNode) // 3 5 6 7 8 9 10 11 12 13 14 15 18 20 25
+// tree.preOrderTraverse(printNode) // 11 7 5 3 6 9 8 10 15 13 12 14 20 18 25
+// tree.postOrderTraverse(printNode) // 3 6 5 8 10 9 7 12 14 13 18 25 20 15 11
+// console.log(tree.min()) // 3
+// console.log(tree.max()) // 25
+// console.log(tree.search(10)) // true
+// console.log(tree.search(100)) // false
+// tree.remove(25)
+// tree.inOrderTraverse(printNode) // 3 5 6 7 8 9 10 11 12 13 14 15 18 20
