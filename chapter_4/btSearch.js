@@ -106,7 +106,20 @@ class BiinarySearch {
 
   // 在树中查找一个键 如果节点存在， 则返回true 如果节点不存在 则返回false
   searchNode(node, key) {
+    if(node === null) {
+      return false
+    }
+    if(key < node.key) {
+      return this.searchNode(node.left, key)
+    }else if(key > node.key) {
+      return this,this.searchNode(node.right, key)
+    } else { // 相等
+      return true
+    }
+  }
 
+  search(key) {
+    return this.searchNode(this.root, key)
   }
 
   // 从树中移除指定键
