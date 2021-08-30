@@ -33,6 +33,7 @@ class BiinarySearch {
     } else {
       this.insertNode(this.root, newNode)
     }
+    console.log(this.root)
   }
 
   // 通过中序遍历方式遍历所有节点
@@ -163,21 +164,21 @@ function printNode(v) {
 
 let tree = new BiinarySearch()
 
-tree.insert(11)
-tree.insert(7)
-tree.insert(15)
-tree.insert(5)
+tree.insert(1)
+tree.insert(2)
 tree.insert(3)
-tree.insert(9)
-tree.insert(8)
-tree.insert(10)
-tree.insert(13)
-tree.insert(12)
-tree.insert(14)
-tree.insert(20)
-tree.insert(18)
-tree.insert(25)
+tree.insert(4)
+tree.insert(5)
 tree.insert(6)
+tree.insert(7)
+// tree.insert(10)
+// tree.insert(13)
+// tree.insert(12)
+// tree.insert(14)
+// tree.insert(20)
+// tree.insert(18)
+// tree.insert(25)
+// tree.insert(6)
 // tree.inOrderTraverse(printNode) // 3 5 6 7 8 9 10 11 12 13 14 15 18 20 25
 // tree.preOrderTraverse(printNode) // 11 7 5 3 6 9 8 10 15 13 12 14 20 18 25
 // tree.postOrderTraverse(printNode) // 3 6 5 8 10 9 7 12 14 13 18 25 20 15 11
@@ -187,3 +188,5 @@ tree.insert(6)
 // console.log(tree.search(100)) // false
 // tree.remove(25)
 // tree.inOrderTraverse(printNode) // 3 5 6 7 8 9 10 11 12 13 14 15 18 20
+
+// 5163724
