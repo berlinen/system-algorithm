@@ -51,21 +51,21 @@
   removeNode(node, key) {
     if(node === null) return null
 
-    if(key < node.key) {
+    if(key < node.key) {    //  左子树递归删除
       node.left = this.removeNode(node.left, key)
       return node
-    } else if(key > node.key) {
+    } else if(key > node.key) { // 右子树递归删除
       node.right = this.removeNode(node.right, key)
       return node
-    } else  {
+    } else  {  // 找到了要删除的节点
       if(node.left === null && node.right  === null) {
         node = null
         return node
       }
-      if(node.left  === null) {
+      if(node.left  === null) { // 无左孩子
         node = node.right
         return node
-      } else if(node.right === null) {
+      } else if(node.right === null) { // 无右孩子
         node =  node.left
         return node
       }
