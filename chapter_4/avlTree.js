@@ -41,4 +41,24 @@ class AVL {
     newRoot.height = 1 + Math.max(this.getHeight(newRoot.left), this.getHeight(newRoot.right))
     return newRoot
   }
+
+  // A的左孩子的左子树插入节点(LL)
+
+  // 1 节点的左孩子代表此节点
+
+  // 2 节点的左孩子右子树变为该节点的左子树
+
+  // 3 将此节点作为左孩子节点的右子树
+
+  rightRotate(node) {
+    let newRoot = node.left // 节点的左孩子代表此节点
+    let newNode = node.left.right // 节点的左孩子右子树
+
+    node.left = newNode //  2 节点的左孩子右子树变为该节点的左子树
+    newRoot.right = node // 3 将此节点作为左孩子节点的右子树
+
+    node.height = 1 + Math.max(this.getHeight(node.left), this.getHeight(node.right))
+    newRoot.height = 1 + Math.max(this.getHeight(newRoot.left), this.getHeight(newRoot.right))
+    return newRoot
+  }
 }
