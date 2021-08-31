@@ -61,4 +61,50 @@ class AVL {
     newRoot.height = 1 + Math.max(this.getHeight(newRoot.left), this.getHeight(newRoot.right))
     return newRoot
   }
+
+  addNode(value) {
+    this.root = this.addChild(this.root, value)
+  }
+
+  // 添加一个节点分为四种情况，分别为左子树的左节点，左子树的右节点，右子树的左节点，右子树的右节点。
+  // 每种情况都要单独处理
+  addChild(node, value) {
+    if(!node) return new Node(value)
+
+    if(node.value > value) {
+      node.left = this.addChild(node.left, value)
+    } else if(node.value < value) {
+      node.right =  this.addChild(node.right, value)
+    } else {
+      node.value = value
+    }
+
+    node.height = 1 + Math.max(this.getHeight(node.left), this.getHeight(node.right))
+
+    let balance = this.getBalance(node)
+
+    // 左子树左节点，左子树高且左子树的左子树高，左子树可能平衡但整体树不平衡
+    if(balance > 1 && this.getBalance(node.left)>= 0) {
+      return this.rightRotate(node)
+    }
+
+    // 右子树右节点，右子树高且右子树的右子树高，右子树可能平衡，但整体不平衡
+    if(balance > 1 && this.getBalance(node.right) >= 0) {
+      return this.leftRotate(node)
+    }
+
+    // 左子树右节点，左子树高且左子树的右子树高，先左旋再右旋
+    if(balance > 1 && this.getBalance(node.left) < 0) {
+      node.left  = this.leftRotate(node.left)
+      return this.rightRotate(node)
+    }
+
+    // 右子树左节点，右子树高且右子树的左子树高，先右旋再左旋
+    if(balance > 1 && this.getBalance(node.right) < 0) {
+      node.right  =  this.rightRotate(node.right)
+      return this.leftRotate(node)
+    }
+
+    return node
+  }
 }
