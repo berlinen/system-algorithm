@@ -33,6 +33,8 @@ n个节点树最大高度就是 Olog2n
 
 寻找到最小失衡子树
 
+A的右孩子的右子树插入节点(RR)
+
 1 节点的右孩子代表此节点
 
 2 节点的右孩子的左子树变为该节点的右子树
@@ -82,6 +84,10 @@ Tree RR_rotate(Tree node){
 ```
 #### 右旋转
 
+适用场景
+
+A的左孩子的左子树插入节点(LL)
+
 1 节点的左孩子代表此节点
 
 2 节点的左孩子右子树变为该节点的左子树
@@ -125,6 +131,41 @@ Tree LL_rotate(Tree node){
     return son;
 }
 ```
+
+###  LR
+
+适用场景A的左孩子的右子树插入节点（LR）
+
+1 对失衡节点A的左孩子B进行左旋转 RR
+
+2 对失衡节点A做右旋转操作
+
+```java
+//LR型，先左旋转，再右旋转
+//返回：新父节点
+Tree LR_rotate(Tree node){
+    RR_rotate(node->lchild);
+    return LL_rotate(node);
+}
+```
+
+### RL A的右孩子的左子树插入节点(RL)
+
+  场景： A的右孩子的左子树插入节点(RL)
+
+（1）对失衡节点 A 的右孩子 C 进行右旋操作，即上述 LL 情形操作。
+
+（2）对失衡节点 A 做左旋操作，即上述 RR 情形操作。
+
+```java
+//RL型，先右旋转，再左旋转
+//返回:新父节点
+Tree RL_rotate(Tree node){
+    LL_rotate(node->rchild);
+    return RR_rotate(node);
+}
+```
+
 
 
 
