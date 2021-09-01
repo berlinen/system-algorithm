@@ -38,17 +38,19 @@ function check(tree, value) {
   }
 }
 // 判别
+// 当发现序列中的某个树与t不一致时候，必须吧序列后面的数都读完
 function judge(t, n)  {
   let i, v
+  let flag = 0 // 0 代表目前还一致， 1代表已经不一致
   scanf("%d", v) // 读取
-  if(v !== t.v) return 0; // 树根一致
+  if(v !== t.v) flag = 1; // 树根一致 不能一发现问题就退出
   else t.flag = 1
 
   for(i = 1; i < n; i++) {
     scanf("%d", v) // 读取
-    if(!check(t, v)) return 0
+    if(!flag && !check(t, v)) flag = 1
   }
-
-  return 1
+  if(flag) return 0
+  else return 1
 }
 
