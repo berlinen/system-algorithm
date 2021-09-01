@@ -17,7 +17,24 @@ function main() {
   return  0
 }
 
+
 // 读数据建立搜索树T
 
 // 判别一序列是否与T构成一样的搜索树
+// 如何判别序列是否与树一致
+// 在树中按顺序搜索序列的每一个数，如果每次搜索经过的节点在前面都出现过 则一致 否则 不一致
+function check(tree, value) {
+  if(tree.flag) {
+    if(value < tree.value) return check(tree.left, value)
+    else if(value  > tree.value) return check(tree.right, value)
+    else return 0
+  } else {
+    if(value === tree.value) {
+      tree.flag = 1
+      return 1
+    }else {
+      return 0
+    }
+  }
+}
 
