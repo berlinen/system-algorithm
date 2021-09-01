@@ -54,3 +54,18 @@ function judge(t, n)  {
   else return 1
 }
 
+// 清除T中各节点的flag标记
+
+function resetT(t) {
+  if(t.left) resetT(t.left)
+  if(t.right) resetT(t.right)
+  t.flag = 0
+}
+
+// 释放树空间
+function freeT(t) {
+  if(t.left) freeT(t.left)
+  if(t.right) freeT(t.right)
+  free(t)
+}
+
