@@ -37,4 +37,18 @@ function check(tree, value) {
     }
   }
 }
+// 判别
+function judge(t, n)  {
+  let i, v
+  scanf("%d", v) // 读取
+  if(v !== t.v) return 0; // 树根一致
+  else t.flag = 1
+
+  for(i = 1; i < n; i++) {
+    scanf("%d", v) // 读取
+    if(!check(t, v)) return 0
+  }
+
+  return 1
+}
 
