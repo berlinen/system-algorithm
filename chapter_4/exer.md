@@ -15,3 +15,29 @@
    3 1 2 4 vs 3 4 1 2 true 拆分 -> {1, 2} 3 {4}
 
 3 建一棵树，再判别其他序列是否是否与该树一致
+
+#### 反转链表
+
+##### 什么是抽象链表
+
+有块地方存数据
+
+有块地方存指针 下一个节点的地址
+
+```java
+Ptr Reverse(head) {
+  count = 1
+  new = head.next
+  old = new.next
+  while() {
+    temp = old.next
+    old.next = new
+    new = old
+    old = temp
+    count++
+  }
+
+  head.next.next = old
+  return new
+}
+```
