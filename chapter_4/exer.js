@@ -98,10 +98,41 @@ function generateLinkList(arr) {
 // 调用
 const head = generateLinkList([1,2,3,4])
 
+function reverseList3(head) {
+  if(head === null || head.next === null) return head
+
+  let new_head = reverseList3(head.next) // 反转后的节点
+  head.next.next = head // 将反转后的链表尾节点与当前节点相连接
+  head.next = null
+
+  return new_head
+}
+
+console.log(reverseList3(head))
+
+// function reverseList2(head, k) {
+//   console.log('>>>>head>>', head)
+//   let newList = head.next // 已经被反转的链表
+//   let oldList = newList.next // 还未被反转的链表
+//   console.log('>>>>oldList>>', oldList)
+//   let count = 1
+
+//   while(count < k)  {
+//     temp = oldList.next
+//     oldList.next = newList
+//     newList = oldList
+//     oldList = temp
+//     count++
+//   }
+//   head.next.next = oldList
+//   return newList
+// }
+//  console.log(reverseList2(head, 5))
+
 function reverseList(head) {
   let pre = null
   while(head) {
-    next = head.next
+    next = head.next // 下一个节点
     head.next = pre
     pre = head
     head = next
@@ -109,5 +140,6 @@ function reverseList(head) {
 
   return pre
 }
-console.log(reverseList(head))
+
+
 
