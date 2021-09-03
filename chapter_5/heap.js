@@ -1,4 +1,4 @@
-// 建立堆
+// 自下而上建立堆
 // 创建堆，其实是items数组的一个结构调整，让其有堆的特性
 function buildHeap(items, heapSize) {
   while(heapSize < items.length - 1) {
