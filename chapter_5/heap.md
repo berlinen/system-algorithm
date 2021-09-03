@@ -51,3 +51,13 @@ insert：将元素item插入最大堆H
 isEmpty：判断最大堆h是否为空
 deleteMax：返回h中最大元素
 
+### 最大堆的操作
+
+```ts
+interface HeapStruct {
+  elements: any[] // 存储堆元素的数组
+  size: number // 堆当前元素个数
+  capacity: number // 堆的最大容量
+}
+```
+
