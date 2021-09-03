@@ -55,6 +55,17 @@ function heapSort(items) {
   return items
 }
 
+// 插入
+function insert(key) {
+  items.push(key)
+  // 获取存储位置
+  let i = items.length - 1
+  while(Math.floor(i/2) > 0 && items[i] < items[Math.floor(i/2)]) {
+    swap(items, i, i/2) // 交换
+    i = i/2
+  }
+}
+
 
 
 // 测试
